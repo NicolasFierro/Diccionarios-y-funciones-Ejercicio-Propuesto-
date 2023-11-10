@@ -79,6 +79,15 @@ def equiposEnAmbiente(ambiente):
             print("  Mouse: {}".format(equipo['mouse']))
             print("  Ambiente: {}".format(equipo['ambiente']))
 
+# Función para mostrar todas las novedades de los equipos
+def mostrarNovedades():
+    print("Todas las novedades de los equipos:")
+    for idEquipo, equipo in equipos.items():
+        if equipo['novedades']:
+            print("Novedades del equipo con ID {}:".format(idEquipo))
+            for novedad in equipo['novedades']:
+                print("- Fecha: {}, Descripción: {}".format(novedad['fecha'], novedad['descripcion']))
+
 # Función para mostrar un menú interactivo
 def mostrarMenu():
     while True:
@@ -91,9 +100,10 @@ def mostrarMenu():
         print("6. Eliminar cargador")
         print("7. Modificar equipo")
         print("8. Mostrar equipos en un ambiente")
-        print("9. Salir")
+        print("9. Mostrar todas las novedades")
+        print("10. Salir")
         
-        opcion = input("Selecciona una opción (1/2/3/4/5/6/7/8/9): ")
+        opcion = input("Selecciona una opción (1/2/3/4/5/6/7/8/9/10): ")
 
         if opcion == '1':
             idEquipo = input("Ingrese el ID del equipo: ")
@@ -128,6 +138,8 @@ def mostrarMenu():
             ambiente = input("Ingrese el ambiente del que desea ver los equipos: ")
             equiposEnAmbiente(ambiente)
         elif opcion == '9':
+            mostrarNovedades()
+        elif opcion == '10':
             break
         else:
             print("Opción no válida. Por favor, seleccione una opción válida.")
